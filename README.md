@@ -48,46 +48,26 @@ Dataset - The Chicago Building Energy Use Benchmarking Ordinance calls on existi
   | Latitude        | Float  | Latitude 
   | Longitude       | Float  | Longitude
   | Location        | String | Latitude and Longitude in dictionary format
-  
 
-## Extract
 
-- We sourced our original data from the Chicago Data Portal. We extracted two different data sets containing food inspection instances in Chicago and surrounding areas. 
-- The first data set contains food inspection instances from 1/1/2010-6/30/2018, and the second data set contains instances from 7/1/2018-Present.
-- Both sets have the same keys, and the reason a new set was created after 7/1/2018 was because the definitions of violations changed.
-- We extracted the first data set, Food Inspections- 1/1/2010-6/30/2018, as a CSV file. This source contained most of the data, with 173k food inspection instances.
-- The second data set, Food Inspections- 7/1/2018-Present was extracted as a JSON file using an API call.
-- The url= (https://data.cityofchicago.org/resource/qizy-d2wf.json) we used for the API call. 
-- Using the data in the JSON file, we created a column heading list as well as an empty list to hold all data rows. Using a for loop we extracted our desired values and appended them to the list we created.
-- From here, we created a data frame using the extracted rows and column header list.
 
-## Transform
+## Clean Up
 
-- Reviewing the food inspection data set, we chose "inspection_id" as the primary key due to the unique values across both data sets. 
-- Right away we dropped 3 columns, "Latitude", "Longitude", and "Location". These keys did not contain relevant values to our desired data set as all 3 columns contained coordinates for their respected business.
-- We renamed all the remaining columns in our CSV file to lower case with under-scores in place of spaces. We did this to ensure proper loading into PostgreSQL. 
-- We loaded both datasets into pandas DataFrames and combined DataFrames into one single source.
-- We changed "inspection_id", "license_id", and "zip" from float to integer. 
-- We also changed "inspection_date" to datetime. JSON and CSV had different formats for their dates, so we had to change the format to match. 
-- To clarify the "risk" column, we split the values in the column into 3 separate columns.
-- The first column contained just the string value "Risk", which we deemed unnecessary and dropped the column. The second column contains the risk rank as an integer from 1-3, given in the original data set. The third column contains the level of risk from low-high, and we removed the parentheses enclosing the levels from the original column.
-- Some risk values were blank; for these we added a value of "0". 
-- We investigated the "results" column containing the outcome of each instance. Some rows were labeled "Out of Business". We dropped these rows as they serve no relevance due to their forced closure. 
-- The original data set warns that there may have been duplicate values. To clean this, we found duplicate "inspection_id" values and dropped those.
-- For purposes of this project, we dropped the "violations" column as the values of this column were too large to fit the database. In a real-world situation, this column would be imperative for analysis.
+- We queried the number of rows in the dataset to ensure we had greater than 100 unique records. The original dataset contains 17728 unique records.
+- We dropped all rows that were 'Exempt' for their 'Reporting Status' as these buildings did not submit any reports to be included in the data set. 
+- We dropped the 'Row ID' column as it was redundant with the 'ID' column for our purposes.
+- Identified rows containing null values, and filled in with 'NaN' in order to appropraitely upload our data to our SQL database.
+- We grouped our data by building in unique 'Community Areas' in order to compare energy usage amongst Chciagos neighborhoods.
+- In order to upload our data set into a SQL Database, we needed to rename all original columns to include all lower case letters and replace spaces with underscores.
+
 
 ## Load
 
-- We loaded our final data into a relational database for storage.
-- We created a connection to PostgreSQL and used this to create a sqlalchemy engine.
-- From here, we loaded our dataframe to SQL by doing a bulk insert into a PostgreSQL database table.
-- We used SQL in PostgreSQL to create the table. 
+- We created a SQL database, in PostgreSQL, called 'Chicago_Energy_Benchmarking.SQL' and within this we created a table to store our CSV file.
+- Using PgAdmin, we imported our Clean_data.csv into our chicago_energy_benchmarking table. 
 - Finally, we commited our changes and closed the session. 
 
-## Topic Chosen
+## Analyses and Visualizations
+- We read in our json file using the D3 Library
+- 
 
-- Given the timeframe and project requirements, we decided these data sets had the potential to meet the ETL requirements for this project.
-
-## API Call Limitations
-
-- The API call has a limitation of the number of records that can be extracted, therefore we only used this data as a way to illustrate for the purposes of this class how to combine two datasets together.
