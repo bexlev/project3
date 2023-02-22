@@ -1,13 +1,14 @@
+DROP TABLE IF EXISTS chicago_energy_table;
 CREATE TABLE chicago_energy_table (
 	data_year INT, 
-	property_name VARCHAR(50),
+	property_name VARCHAR(500),
 	reporting_status VARCHAR(30), 
-	address VARCHAR(30),
-	zip_code VARCHAR(5),
+	address VARCHAR(300),
+	zip_code VARCHAR(50),
 	chicago_energy_rating FLOAT(2),
 	exempt_from_chicago_energy_rating VARCHAR(30),
-	community_area VARCHAR(30),
-	primary_property_type VARCHAR(30), 
+	community_area VARCHAR(300),
+	primary_property_type VARCHAR(300), 
 	gross_floor_area FLOAT(2),
 	year_built FLOAT(2),
 	number_of_buildings FLOAT(2),
@@ -26,6 +27,6 @@ CREATE TABLE chicago_energy_table (
 	ghg_intensity FLOAT(2),
 	lat FLOAT(2), 
 	lon FLOAT(2),
-	_location VARCHAR(50)
+	_location VARCHAR(500)
 )
 ;
