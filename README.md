@@ -48,14 +48,14 @@ Dataset - The Chicago Building Energy Use Benchmarking Ordinance calls on existi
   | Latitude        | Float  | Latitude 
   | Longitude       | Float  | Longitude
   | Location        | String | Latitude and Longitude in dictionary format
-
+  | Row_ID        | String | A unique ID for the row, made up of the combination of the Data Year and ID
 
 
 ## Clean Up
 
 - We queried the number of rows in the dataset to ensure we had greater than 100 unique records. The original dataset contains 17728 unique records.
 - We dropped all rows that were 'Exempt' for their 'Reporting Status' as these buildings did not submit any reports to be included in the data set. 
-- We dropped the 'Row ID' column as it was redundant with the 'ID' column for our purposes.
+- We renamed the 'ID' column to 'Building ID' to further differentiate from 'Row_ID' which is unique for each row. 'Building ID' is unique to each building, meaning there are duplicates in this column. 
 - Identified rows containing null values, and filled in with 'NaN' in order to appropraitely upload our data to our SQL database.
 - We grouped our data by building in unique 'Community Areas' in order to compare energy usage amongst Chciagos neighborhoods.
 - In order to upload our data set into a SQL Database, we needed to rename all original columns to include all lower case letters and replace spaces with underscores.
@@ -64,6 +64,7 @@ Dataset - The Chicago Building Energy Use Benchmarking Ordinance calls on existi
 ## Load
 
 - We created a SQL database, in PostgreSQL, called 'Chicago_Energy_Benchmarking.SQL' and within this we created a table to store our CSV file.
+- We set 'row_id' as our primary key. 
 - Using PgAdmin, we imported our Clean_data.csv into our chicago_energy_benchmarking table. 
 - Finally, we commited our changes and closed the session. 
 
