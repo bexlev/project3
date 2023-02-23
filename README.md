@@ -1,3 +1,6 @@
+<div><img align=left width=200px height=120px src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaTDbsqoiHdttMWC9s4MBjNNj8JHMDIdKB6A&usqp=CAU">
+
+
 # Project 3- Chicago Energy Benchmarking 
   
 This is a group project purposed to demonstate our ability to tell stories using data vizualization.</div>
