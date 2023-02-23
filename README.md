@@ -1,6 +1,6 @@
 # Project 3- Chicago Energy Benchmarking 
   
-This is a group project purposed to demonstarte our ability to tell stories using data vizualization.</div>
+This is a group project purposed to demonstate our ability to tell stories using data vizualization.</div>
 
 
 ## Contributors
