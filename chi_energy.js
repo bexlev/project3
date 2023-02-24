@@ -4,7 +4,10 @@
 // y = consumption: electricity, ghi, natural gas
 
 // Load the JSON data
-d3.json('C:\Users\Rebecca Levine\Desktop\cbc-hw-files\project3\Resources\Chicago_Energy_Benchmarking.json').then(function(data) {
+var json_path = '/Resources/Chicago_Energy_Benchmarking.json'
+d3.json(json_path)
+
+d3.json(json_path).then(function(data) {
 console.log(data);
 
     // Define the dropdown options based on the available years in the data
