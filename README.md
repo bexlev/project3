@@ -75,5 +75,5 @@ Dataset - The Chicago Building Energy Use Benchmarking Ordinance calls on existi
 - We read in our json file using the D3 Library
 - Using JavaScript and HTML, we created a dashboard fit with a dropdown element and vizualizations.
 - We included a map of each building that filed and energy report in Chicago for each year between 2015-2019. The map indicated which neighborhoods use the greatest amount of energy, as well details about individual building energy ratings. 
-- Using the dropdown, site visitors have the ability to select any building that has filed a report and see a line graph charting electricty usage, natural gas usage, and total GHG emissions. Theres is also a gauge vizualizations that charts that building's average Chicago Energy Score from 2015-2019. 
+- Using the dropdown, site visitors have the ability to select any building that has filed a report and see a line graph charting electricty usage, natural gas usage, and total GHG emissions. Theres is also a gauge vizualizations that charts that building's average Chicago Energy Score from 2018-2020. 
 
