@@ -2,11 +2,16 @@
 
 
 
-d3.json('project3/Resources/Chicago_Energy_Benchmarking.json', function(data){
-  console.log(data);
-})
+d3.json("project3/testfile.geojson")
+  .then(function(data) {
+    // code to handle the loaded data
+    console.log(data);
+  })
+  .catch(function(error) {
+    console.log(error);
+  });
 
-
+////////////////////////////
 
 var myMap = L.map("map", {
   center: [ 41.878, -87.629],
@@ -52,12 +57,12 @@ function createMap(property_name) {
 //////////////////////
 ////Bar chart
 // Load the JSON data
-d3.json('project3/Resources/Chicago_Energy_Benchmarking.json', function(data){
+d3.json("project3/testfile.geojson", function(data){
   console.log(data);
 })
 
-d3.json("data.json").then(function(data) {
-
+d3.json("project3/project3/testfile.geojson").then(function(data) {
+ 
   // Define the dropdown options based on the available years in the data
   var yearOptions = d3.set(data.map(function(d) { return d.data_year; })).values();
   yearDropdown.selectAll('option')
