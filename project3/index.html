@@ -1,41 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <title>Chicago Energy Benchmarking Map</title>
-
-   <!-- D3 -->
-  <script src="https://d3js.org/d3.v5.min.js"></script>
-
-  ></script>
-
-  <!-- Leaflet CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-    crossorigin="" />
-
-  <!-- Leaflet JavaScript code -->
-  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-    crossorigin=""></script>
-
-  <!-- Our CSS -->
-  <link rel="stylesheet" type="text/css" href="static/css/style.css">
-
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Chicago Building Energy Data</title>
 
   
-</head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+     crossorigin=""/>
+
+     <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <script src="https://cdn.plot.ly/plotly-2.3.1.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+    crossorigin=""></script>
+
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+
+    
+
+    <style>
+      #mapid {
+        height: 500px;
+      }
+
+      .chart {
+        width: 600px;
+        height: 400px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Chicago Building Energy Data</h1>
+
+    <div id="mapid"></div>
+
+    <div class="chart" id="chart1"></div>
+    <div class="chart" id="chart2"></div>
+    <div class="chart" id="chart3"></div>
+    <div class="chart" id="chart4"></div>
 
 
-<body>
-  <!-- The div where we'll insert our map -->
-  <div id="map"></div>
-
-  <!-- JavaScript file -->
-  <script type="text/javascript" src="chi_energy.js"></script>
-  <script src="testfile.geojson"></script>
-
-</body>
-
+    <script src="map.js"></script>
+    <script src="graph.js"></script>
+  </body>
 </html>
