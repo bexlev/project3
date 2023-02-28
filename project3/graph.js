@@ -1,9 +1,10 @@
 function createChart() {
     d3.json("https://data.cityofchicago.org/resource/cwig-ma7x.json").then(function(data) {
-      const energyRatingByYear = d3.rollup(
+        console.log(data)  
+    const energyRatingByYear = d3.rollup(
         data,
         v => d3.mean(v, d => d.chicago_energy_rating),
-        d => d.data_year.slice(0, 4),
+        d => d.data_year
       );
   
       const x = Array.from(energyRatingByYear.keys());
@@ -75,10 +76,11 @@ function createChart() {
   
   
   d3.json("https://data.cityofchicago.org/resource/cwig-ma7x.json").then(function(data) {
-    const energyUseByYear = d3.rollup(
+    console.log(data)  
+  const energyUseByYear = d3.rollup(
       data,
       v => d3.sum(v, d => d.electricity_use_kbtu + d.natural_gas_use_kbtu),
-      d => d.data_year.slice(0, 4)
+      d => d.data_year
     );
   
     const x = Array.from(energyUseByYear.keys());
@@ -106,7 +108,7 @@ function createChart() {
     Plotly.newPlot("chart3", [trace], layout);
   });
 //////////////
-// graph.js
+
 
 d3.json("https://data.cityofchicago.org/resource/cwig-ma7x.json").then(function(data) {
   // Group the data by year and calculate the total electricity and natural gas use for each year
@@ -116,8 +118,7 @@ d3.json("https://data.cityofchicago.org/resource/cwig-ma7x.json").then(function(
       electricityUse: d3.sum(v, d => d.electricity_use_kbtu),
       naturalGasUse: d3.sum(v, d => d.natural_gas_use_kbtu)
     }),
-    d => d.data_year.slice(0, 4)
-  );
+    d => d.data_year)
 
   // Convert the data into arrays for Plotly.js
   const x = Array.from(energyUseByYear.keys());
