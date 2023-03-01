@@ -38,18 +38,19 @@ function updateMarkers(year) {
     // latLong exists as a string, that must be parsed
     let latLng = d.loc.replace(/[()\s]/g, '').split(',').map(x => parseFloat(x))
 
-    // Create a marker with a popup containing the building's name and energy rating.
+    // Create a marker with a popup containing the building's name and data
     const marker = L.marker(latLng)
-      .bindPopup(`<h3>${d.property_name}</h3>
-            <p>Energy Rating: ${d.chicago_energy_rating}</p>
-            <p>Community Area: ${d.community_area}</p>
-            <p>Primary Property Type: ${d.primary_property_type}</p>
-            <p>ENERGY STAR Score: ${d.energy_star_score}</p>
-            <p>Gross Floor Area - Buildings (sq ft): ${d.gross_floor_area_buildings_sq_ft}</p>
-            <p>Water Use (kGal): ${d.water_use_kgal}</p>
-            <p>Electricity Use (kBtu): ${d.electricity_use_kbtu}</p>
-            <p>Natural Gas Use (kBtu): ${d.natural_gas_use_kbtu}</p>
-            <p>Total GHG Emissions (Metric Tons CO2e): ${d.total_ghg_emissions_metric_tons_co2e}</p>`);
+    .bindPopup(`<h3>${d.property_name}</h3>
+              <p>Energy Rating: ${d.chicago_energy_rating}</p>
+              <p>Community Area: ${d.community_area}</p>
+              <p>Primary Property Type: ${d.primary_property_type}</p>
+              <p>ENERGY STAR Score: ${d.energy_star_score}</p>
+              <p>Gross Floor Area - Buildings (sq ft): ${d.gross_floor_area_buildings_sq_ft}</p>
+              <p>Water Use (kGal): ${d.water_use_kgal}</p>
+              <p>Electricity Use (kBtu): ${d.electricity_use_kbtu}</p>
+              <p>Natural Gas Use (kBtu): ${d.natural_gas_use_kbtu}</p>
+              <p>Total GHG Emissions (Metric Tons CO2e): ${d.total_ghg_emissions_metric_tons_co2e}</p>`);
+
     // Add the marker to the markers array.
     markers.push(marker);
   });
@@ -88,7 +89,17 @@ d3.select("#selDataset").on("change", function() {
   const year = parseInt(d3.event.target.value);
   updateMarkers(year);
 });
+/////////////////////
 
+
+
+
+
+
+
+
+
+/////////////////
 
 function chart1(data) {
   const energyRatingByYear = d3.rollup(
@@ -239,3 +250,71 @@ function chart4(data) {
   // Plot the chart
   Plotly.newPlot("chart4", [trace1, trace2], layout);
 }
+// Create a function to display chart4 in the popup
+function displayChart4(data) {
+  // Group the data by year and calculate the total electricity and natural gas use for each year
+  const electricityUseByYear = d3.rollup(
+    data,
+    v => d3.sum(v, d => d.electricity_use),
+    d => d.data_year,
+  );
+
+  const gasUseByYear = d3.rollup(
+    data,
+    v => d3.sum(v, d => d.natural_gas_use),
+    d => d.data_year,
+  );
+
+  // Convert the data into arrays for Plotly.js
+  const x = [...electricityUseByYear.keys()].sort((a, b) => a - b);
+  const electricityUseByYearSorted = [...x.map(year => electricityUseByYear.get(year))]
+  const gasUseByYearSorted = [...x.map(year => gasUseByYear.get(year))]
+
+  // Define the traces for the plot
+  const trace1 = {
+    x,
+    y: electricityUseByYearSorted,
+    name: "Electricity Use (kBtu)",
+    type: "scatter"
+  };
+  const trace2 = {
+    x,
+    y: gasUseByYearSorted,
+    name: "Natural Gas Use (kBtu)",
+    type: "scatter"
+  };
+
+  // Define the layout for the plot
+  const layout = {
+    title: "Building Energy Use by Year",
+    xaxis: {
+      title: "Year",
+      tickmode: "linear",
+      tick0: x,
+      dtick: 1
+    },
+    yaxis: {
+      title: "Energy Use (kBtu)"
+    }
+  };
+
+  // Use Plotly.js to create the chart
+  Plotly.newPlot("chart4-popup", [trace1, trace2], layout);
+}
+
+// Create a Leaflet marker with a popup that displays chart4 when clicked
+const marker = L.geoJSON(data, {
+  pointToLayer: function(feature, latlng) {
+    return L.marker(latlng);
+  },
+  onEachFeature: function(feature, layer) {
+    const [longitude, latitude] = feature.geometry.coordinates;
+    layer.bindPopup('<div id="chart4-popup"></div>');
+    layer.on('click', function () {
+      displayChart4(data);
+    });
+  }
+}).addTo(map);
+
+
+
