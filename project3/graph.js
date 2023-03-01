@@ -90,9 +90,6 @@ d3.select("#selDataset").on("change", function() {
 });
 
 
-
-
-
 function chart1(data) {
   const energyRatingByYear = d3.rollup(
     data,
@@ -171,7 +168,7 @@ function chart3(data) {
   const y = [...x.map(year => energyUseByYear.get(year))]
 
   const layout = {
-    title: "Building Energy Use by Year",
+    title: "Total Building Energy Use by Year",
     xaxis: {
       title: "Year",
       tickmode: "linear",
