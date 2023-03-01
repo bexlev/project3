@@ -3,7 +3,7 @@
 
 # Project 3- Chicago Energy Benchmarking 
   
-This is a group project purposed to demonstate our ability to tell stories using data vizualization on an interactive dashboard.</div>
+This is a group project purposed to demonstrate our ability to tell stories using data vizualization on an interactive dashboard.</div>
 
 
 ## Contributors
@@ -23,7 +23,7 @@ Dataset - The Chicago Building Energy Use Benchmarking Ordinance calls on existi
   | Column Name     | Type    | Description              |
   | ----------------| ------- | ------------------------ |
   | Data Year       | Int     | Calendar Year 
-  | ID              | Int  | Unique idetifier for each property            
+  | ID              | Int  | Unique identifier for each property            
   | Property Name   | String  | Official property name
   | Reporting Status| String     | Whether or not the building submitted its report for the Data Year shown
   | Address         | String  | Property Street Address
@@ -73,7 +73,7 @@ Dataset - The Chicago Building Energy Use Benchmarking Ordinance calls on existi
 
 ## Analyses and Visualizations
 
-- We read in our json file using the D3 Library
+- We read in our json file using the D3 Library.
 - Using JavaScript and HTML, we created a dashboard fit with a dropdown element and vizualizations.
 - We included a map of each building that filed and energy report in Chicago for each year between 2018-2020. The map indicated which neighborhoods use the greatest amount of energy, as well details about individual building energy ratings.
 - Using the dropdown, site visitors have the ability to select the year of the data they see on the map. As buildings energy ratings are assigned annually, energy scores are subject to change. This function allows users to narrow it down to a particular year. 
@@ -86,6 +86,7 @@ Dataset - The Chicago Building Energy Use Benchmarking Ordinance calls on existi
 <p align="center">
   <img width=400px height=240px src="https://github.com/bexlev/project3/blob/main/images/Chart1.png">
 </p>
+- Chart 2 shows the distribution of Chicago Energy Rating scores as a function of total GHG emissions, and provides community area of each data point by hovering over it.
 
 - Charts 3 and 4 show the total energy use across the datset for each year (shown in kBtu). Chart 4 looks at natural gas and elecrticity use indepentdently. In 2018, natural gas usage was much higher than any other year, in fact total energy consumpotion was higher. Its interesting that 2018 had a better average energy performance rate than 2019, even with the higher consumption. 
 
