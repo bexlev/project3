@@ -1,0 +1,58 @@
+body {
+    background: #111;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: #eee;
+  }
+  
+  .panel-heading {
+    background: #666;
+    border-color: #444;
+    color: #fff;
+  }
+  
+  .panel-body {
+    background: #999;
+    border-color: #444;
+    color: #eee;
+  }
+  
+  .jumbotron {
+    background: #444;
+    color: #eee;
+    text-shadow: 2px 2px #111;
+  }
+  
+  .btn-primary {
+    background-color: #ccc;
+    border-color: #444;
+    color: #111;
+    text-shadow: none;
+  }
+  
+  .btn-primary:hover {
+    background-color: #ddd;
+    border-color: #444;
+    color: #111;
+    text-shadow: none;
+  }
+  
+  .container-fluid {
+    background-color: #111;
+    border-color: #333;
+    color: #eee;
+  }
+  
+  #map {
+    height: 500px;
+    border: 5px solid #333;
+    background-color: #666;
+  }
+  
+  select.form-control {
+    background-color: #ccc;
+    border-color: #444;
+    color: #111;
+  }
+  

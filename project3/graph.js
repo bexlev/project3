@@ -21,13 +21,15 @@ d3.json(url).then(function (res) {
   updateMarkers(2019);
 });
 
+
 function updateMarkers(year) {
   // Clear existing markers.
   // this line handles the initial load situation where markerLayer is undefined
   // and any situation thereafter when it is defined and needs to be cleared
   markerLayer && markerLayer.clearLayers();
+
   // Filter data by year.
-  const dataForYear = d3.group(data, d => d.data_year).get(year);
+  const dataForYear = data.filter(d => d.data_year == year);
 
   // Create markers for each building and add them to the map.
   const markers = [];
@@ -56,6 +58,40 @@ function updateMarkers(year) {
   markerLayer = L.layerGroup(markers);
   map.addLayer(markerLayer);
 }
+
+// Load the data and populate the dropdown menu with available data years
+d3.json(url).then(function (res) {
+  data = res.properties;
+
+  // Get an array of unique data years
+  const dataYears = [...new Set(data.map(d => d.data_year))];
+
+  // Populate the dropdown menu with available data years
+  const select = d3.select("#selDataset");
+  select.selectAll("option")
+    .data(dataYears)
+    .enter()
+    .append("option")
+    .text(d => d)
+    .attr("value", d => d)
+    .property("selected", d => d === 2019);
+
+  chart1(data);
+  chart2(data);
+  chart3(data);
+  chart4(data);
+  updateMarkers(2019);
+});
+
+// Add an event listener to the dropdown menu to update the markers when a new year is selected
+d3.select("#selDataset").on("change", function() {
+  const year = parseInt(d3.event.target.value);
+  updateMarkers(year);
+});
+
+
+
+
 
 function chart1(data) {
   const energyRatingByYear = d3.rollup(
