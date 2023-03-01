@@ -72,10 +72,26 @@ Dataset - The Chicago Building Energy Use Benchmarking Ordinance calls on existi
 - Finally, we commited our changes and closed the session. 
 
 ## Analyses and Visualizations
+
 - We read in our json file using the D3 Library
 - Using JavaScript and HTML, we created a dashboard fit with a dropdown element and vizualizations.
 - We included a map of each building that filed and energy report in Chicago for each year between 2018-2020. The map indicated which neighborhoods use the greatest amount of energy, as well details about individual building energy ratings.
 - Using the dropdown, site visitors have the ability to select the year of the data they see on the map. As buildings energy ratings are assigned annually, energy scores are subject to change. This function allows users to narrow it down to a particular year. 
+
+<p align="center">
+  <img width=400px height=240px src="https://github.com/bexlev/project3/blob/main/images/map.png">
+</p>
 - Chart 1 is a line graph depicting the average yearly Chicago Energy Rating for all buildings that submitted a report. As you can see, 2019 was a low scoring year, with an improvemnet in 2020.
+
+<p align="center">
+  <img width=400px height=240px src="https://github.com/bexlev/project3/blob/main/images/Chart1.png">
+</p>
+
 - Charts 3 and 4 show the total energy use across the datset for each year (shown in kBtu). Chart 4 looks at natural gas and elecrticity use indepentdently. In 2018, natural gas usage was much higher than any other year, in fact total energy consumpotion was higher. Its interesting that 2018 had a better average energy performance rate than 2019, even with the higher consumption. 
 
+<p align="center">
+  <img width=400px height=240px src="https://github.com/bexlev/project3/blob/main/images/Chart3:4.png">
+</p>
+
+## Limitations
+-Given the way our JSON file exported, we were unable to call into indiviual buildings. We adapted by changing our analyses to view the data as a whole, but we unable to isolate the buildings for individual analyses. 
