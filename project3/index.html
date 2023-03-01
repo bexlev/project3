@@ -1,99 +1,75 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    
-    <meta charset="UTF-8">
+
+<head>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  
-    <meta charset="utf-8">
-    <title>Chicago Building Energy Data</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="static/css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="graph.js" defer></script>
+  <title>Chicago Building Energy Data</title>
+</head>
 
-  
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
-     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
-     crossorigin=""/>
+<body>
+  <div class="container">
 
-     <script src="https://d3js.org/d3.v7.min.js"></script>
-
-    <script src="https://cdn.plot.ly/plotly-2.3.1.min.js"></script>
-    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
-    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
-    crossorigin=""></script>
-
-    <script src="https://d3js.org/d3.v6.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    
-
-    <style>
-      #mapid {
-        height: 500px;
-      }
-
-      .chart {
-        width: 600px;
-        height: 400px;
-      }
-    </style>
-  </head>
-
-  <body>
-    
-    
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 jumbotron text-center">
-          <h1>Chicago Building Energy Data Dashboard</h1>
-         
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2">
-          <div class="well">
-            <h5>Test Subject ID No.:</h5>
-            <select id="selDataset" onchange="optionChanged(this.value)"></select>
-          </div>
-          <div class="panel panel-primary">
-            <div class="panel-heading">
-              <h3 class="panel-title">Energy Use By Year</h3>
-            </div>
-            <div id="map" class="panel-body"></div>
-          </div>
-        </div>
-        <div class="col-md-5">
-          <div id="map"></div>
-        </div>
-        <div class="col-md-5">
-          <div id="chart2"></div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div id="chart3"></div>
-        </div>
+    <div class="row">
+      <div class="col-md-12 jumbotron text-center">
+        <h1>Chicago Building Energy Data Dashboard</h1>
       </div>
     </div>
-  
-    <script src="https://d3js.org/d3.v5.min.js"></script>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-   
-    
-    
+
+    <div class="row">
+      <div class="col-md-2">
+        <div class="well">
+          <h5>Test Subject ID No.:</h5>
+          <select id="selDataset"></select>
+        </div>
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Energy Use By Year</h3>
+          </div>
+        </div>
+      </div>
+      <div id="map" class="col-md-10"></div>
+    </div>
+
     <h1>Chicago Building Energy Data</h1>
 
+    <div class="row">
+      <div class="col-md-12">
+        <div id="chart1"></div>
+      </div>
+    </div>
 
+    <div class="row">
+      <div class="col-md-12">
+        <div id="chart2"></div>
+      </div>
+    </div>
 
+    <div class="row">
+      <div class="col-md-12">
+        <div id="chart3"></div>
+      </div>
+    </div>
 
-    <div id="mapid"></div>
+    <div class="row">
+      <div class="col-md-12">
+        <div id="chart4"></div>
+      </div>
+    </div>
 
-    <!-- <div class="chart" id="chart1"></div>
-    <div class="chart" id="chart2"></div>
-    <div class="chart" id="chart3"></div>
-    <div class="chart" id="chart4"></div> -->
+  </div>
 
+</body>
 
-    <script src="map.js"></script>
-    <script src="graph.js"></script>
-   
-  </body>
 </html>
