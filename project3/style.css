@@ -1,58 +1,83 @@
 body {
-    background: #111;
+    background-color: #fcf8e8;
+    font-family: 'Helvetica Neue', sans-serif;
   }
   
-  h1, h2, h3, h4, h5, h6 {
-    color: #eee;
+  /* Header */
+  header {
+    background-color: #d7b98e;
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
   }
   
-  .panel-heading {
-    background: #666;
-    border-color: #444;
-    color: #fff;
+  h1 {
+    font-size: 48px;
+    margin: 0;
   }
   
-  .panel-body {
-    background: #999;
-    border-color: #444;
-    color: #eee;
+  /* Navigation */
+  nav {
+    background-color: #a7c957;
+    border-radius: 10px;
+    padding: 10px;
   }
   
-  .jumbotron {
-    background: #444;
-    color: #eee;
-    text-shadow: 2px 2px #111;
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
   }
   
-  .btn-primary {
-    background-color: #ccc;
-    border-color: #444;
-    color: #111;
-    text-shadow: none;
+  nav ul li {
+    display: inline-block;
+    margin-right: 20px;
   }
   
-  .btn-primary:hover {
-    background-color: #ddd;
-    border-color: #444;
-    color: #111;
-    text-shadow: none;
+  nav ul li:last-child {
+    margin-right: 0;
   }
   
-  .container-fluid {
-    background-color: #111;
-    border-color: #333;
-    color: #eee;
+  nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 24px;
+    padding: 10px;
+    border-radius: 10px;
   }
   
-  #map {
-    height: 500px;
-    border: 5px solid #333;
-    background-color: #666;
+  nav ul li a:hover {
+    background-color: #ec9a29;
   }
   
-  select.form-control {
-    background-color: #ccc;
-    border-color: #444;
-    color: #111;
+  /* Main content area */
+  main {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #c9da7f;
+  }
+  
+  h2 {
+    font-size: 36px;
+    margin-top: 0;
+  }
+  
+  p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  
+  /* Footer */
+  footer {
+    background-color: #ac3e31;
+    color: #ffffff;
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+  }
+  
+  footer p {
+    margin: 0;
   }
   
